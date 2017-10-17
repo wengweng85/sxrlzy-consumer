@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+	<dubbo:application name="sxrlzy_consumer"  />
+	<!-- 超时设置 -->
+	<dubbo:consumer  />
+	<!-- 使用zookeeper注册中心暴露服务地址 -->
+	<dubbo:registry address="${zookeeperurl}"  check="false" />
+	
+	<!-- 生成远程服务代理，可以和本地bean一样使用Service -->  
+    <dubbo:reference id="fileLoadService" interface="com.insigma.mvc.service.common.fileupload.FileLoadService"   check="false" url="${sxrlzy_api_url}/com.insigma.mvc.service.common.fileupload.FileLoadService"/>
+    <dubbo:reference id="InitService" interface="com.insigma.mvc.service.init.InitService"   check="false" url="${sxrlzy_api_url}/com.insigma.mvc.service.init.InitService"/>
+    <dubbo:reference id="LoginService" interface="com.insigma.mvc.service.login.LoginService"   check="false" url="${sxrlzy_api_url}/com.insigma.mvc.service.login.LoginService"/>
+    <dubbo:reference id="logservice" interface="com.insigma.mvc.service.log.LogService"    check="false" url="${sxrlzy_api_url}/com.insigma.mvc.service.log.LogService"/>
+    <dubbo:reference id="SuggestSearchService"  interface="com.insigma.mvc.service.common.suggest.SuggestSearchService"  url="${sxrlzy_api_url}/com.insigma.mvc.service.common.suggest.SuggestSearchService" />
+    <dubbo:reference id="IndexService"  interface="com.insigma.mvc.service.index.IndexService"   url="${sxrlzy_api_url}/com.insigma.mvc.service.index.IndexService"/>
+    
+     
+    <!--demo-->
+	<dubbo:reference  id="DemoAc01Service"  interface="com.insigma.mvc.service.demo.DemoAc01Service"  url="${sxrlzy_api_url}/com.insigma.mvc.service.demo.DemoAc01Service"  />
+    
+    <!--resources-->
+	<dubbo:reference  id="HRServicesRegEf11Service"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_001.HRServicesRegEf11Service"    url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_001_001.HRServicesRegEf11Service"/>
+    <dubbo:reference  id="BusinessRecruitmentEe18Service"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_003.BusinessRecruitmentEe18Service"   url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_001_003.BusinessRecruitmentEe18Service"/>
+    <dubbo:reference  id="BusinessReportEe16Service"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_003.BusinessReportEe16Service"    url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_001_003.BusinessReportEe16Service"/>
+    <dubbo:reference  id="RecruitmentDataEe15Service"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_003.RecruitmentDataEe15Service"   url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_001_003.RecruitmentDataEe15Service"/>
+    <dubbo:reference  id="HRAgencyRegAuditService"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_005.HRAgencyRegAuditService"    url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_001_005.HRAgencyRegAuditService"/>
+    <dubbo:reference  id="HRAgencyChangeAuditService"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_006.HRAgencyChangeAuditService"    url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_001_006.HRAgencyChangeAuditService"/>
+    <dubbo:reference  id="HRAgencyReportService"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_007.HRAgencyReportService"    url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_001_007.HRAgencyReportService"/>
+    <dubbo:reference  id="HRAgencyDeleteAuditService"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_008.HRAgencyDeleteAuditService"    url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_001_008.HRAgencyDeleteAuditService"/>
+    <dubbo:reference  id="HRAgencyApplyService"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_002_001.HRAgencyApplyService"    url="${sxrlzy_api_url}/com.insigma.mvc.service.common.fileupload.FileLoadService"/>
+    <dubbo:reference  id="HRAgencyEditApplyService"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_002_002.HRAgencyEditApplyService"  url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_002_002.HRAgencyEditApplyService"/>
+    <dubbo:reference  id="HRAgencyCancelApplyService"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_002_004.HRAgencyCancelApplyService"    url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_002_004.HRAgencyCancelApplyService"/>
+    <dubbo:reference  id="AnnouncementInformEe11Service"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_003_001.AnnouncementInformEe11Service"    url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_003_001.AnnouncementInformEe11Service"/>
+    <dubbo:reference  id="AgencyOtherDataEntryService"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_004_001.AgencyOtherDataEntryService"   url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_004_001.AgencyOtherDataEntryService" />
+    <dubbo:reference  id="RecruitDataEntryService"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_004_002.RecruitDataEntryService"   url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_004_002.RecruitDataEntryService"/>
+    <dubbo:reference  id="ComplaintsReportManageService"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_005_001.ComplaintsReportManageService"   url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_005_001.ComplaintsReportManageService"/>
+    <dubbo:reference  id="InfoReleaseManageService"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_006_001.InfoReleaseManageService"    url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_006_001.InfoReleaseManageService"/>
+    <dubbo:reference  id="OpinionSuggetionEe17Service"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_006_003.OpinionSuggetionEe17Service"    url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_006_003.OpinionSuggetionEe17Service"/>
+	<dubbo:reference  id="InfoBusinessEE18Service"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_007_002.InfoBusinessEE18Service"   url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_007_002.InfoBusinessEE18Service"/>
+	<dubbo:reference  id="UserInfoManageService"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_009_001.UserInfoManageService"    url="${sxrlzy_api_url}/com.insigma.mvc.service.resources.SXJY_RLZYSC_009_001.UserInfoManageService"/>
+	
+	<!--sys-->
+	<dubbo:reference  id="SysCodeTypeService"  interface="com.insigma.mvc.service.sysmanager.codetype.SysCodeTypeService"   url="${sxrlzy_api_url}/com.insigma.mvc.service.sysmanager.codetype.SysCodeTypeService" />
+    <dubbo:reference  id="SysPermService"  interface="com.insigma.mvc.service.sysmanager.perm.SysPermService"  url="${sxrlzy_api_url}/com.insigma.mvc.service.sysmanager.perm.SysPermService" />
+	<dubbo:reference  id="SysRoleService"  interface="com.insigma.mvc.service.sysmanager.role.SysRoleService"    url="${sxrlzy_api_url}/com.insigma.mvc.service.sysmanager.role.SysRoleService"/>
+	<dubbo:reference  id="SysUserRoleService"  interface="com.insigma.mvc.service.sysmanager.userrole.SysUserRoleService"  url="${sxrlzy_api_url}/com.insigma.mvc.service.sysmanager.userrole.SysUserRoleService"  />
+</beans>
